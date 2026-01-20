@@ -28,7 +28,7 @@ struct FourierFockMatrix{MT<:AbstractMatrix{ComplexF64}} <: AbstractTDFockOperat
     ω::Float64
 end
 
-function fourier_Op(O::PeriodicFockOperator; N::Int=200, tol::Float64=1e-2)
+function Fourier_op(O::PeriodicFockOperator; N::Int=200, tol::Float64=1e-2)
     T = O.T
     tgrid = range(0, T, length=N+1)[1:end-1]
 
@@ -80,7 +80,8 @@ function matrix_rep(O::FourierFockOperator, basis::Vector{AbstractFockState})
     return FourierFockMatrix(terms_matrix, O.ω)
 end
 
-function fourier_Op(O::PeriodicFockMatrix; N::Int=200, tol::Float64=1e-2)
+# Must add functionality to check for aliasing!!
+function Fourier_op(O::PeriodicFockMatrix; N::Int=200, tol::Float64=1e-2)
     T = O.T
     tgrid = range(0, T, length=N+1)[1:end-1]
 
