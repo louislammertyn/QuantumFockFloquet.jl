@@ -6,9 +6,10 @@ using Reexport
 using LinearAlgebra
 using FFTW
 
-include("./utils.jl")
+
 include("./PeriodicFockOp.jl")
-include("./Expansions.jl")
+include("./utils.jl")
+include("./FourierMagnusTE.jl")
 
 
 export AbstractTDFockOperator,
@@ -20,7 +21,7 @@ export AbstractTDFockOperator,
        Fourier_op,
        matrix_rep
        
-export all_frequencies
+export all_frequencies, triv
 
 
 export analytic_integral,

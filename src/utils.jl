@@ -1,13 +1,4 @@
-struct ConstantFunction
-    value::ComplexF64  # the constant value
-end
-# Call syntax: f(t) = value
-(c::ConstantFunction)(t) = c.value
-
-Base.:==(c1::ConstantFunction, c2::ConstantFunction) = c1.value == c2.value
-Base.show(io::IO, c::ConstantFunction) = print(io, "ConstantFunction(", c.value, ")")
-
-
+triv(t::Float64) = one(ComplexF64)
 function all_frequencies(H::Union{FourierFockOperator, FourierFockMatrix})::Vector{Int}
     freqs = Set{Int}()
     for term in H.terms
@@ -17,3 +8,5 @@ function all_frequencies(H::Union{FourierFockOperator, FourierFockMatrix})::Vect
     end
     return sort!(collect(freqs))
 end
+
+
